@@ -11,9 +11,8 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents().default()
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"), description='Discord.py music bot', intents=intents)
 
 if __name__ == "__main__":
-  bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"), description='Discord.py music bot')
   bot.add_cog(Music(bot))
   bot.run(DISCORD_TOKEN)
